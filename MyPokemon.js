@@ -1,16 +1,20 @@
 // Variables used by Scriptable.
 // These must be at the very top of the file. Do not edit.
 // icon-color: purple; icon-glyph: portrait;
-// PokéWidget v1.1.4
+// Variables used by Scriptable.
+// These must be at the very top of the file. Do not edit.
+// icon-color: purple; icon-glyph: portrait;
+// PokéWidget v1.1.5
 // 
 // Developer: RealNyk
-// Release Date: 01/25/2022
+// Release Date: 01/31/2022
 // 
 // Release Notes: 
 //    - Cleaned up the codebase.
 //    - Tapping widget links to TCGPlayer site
 //    - Added Siri voice controls
 //    - Added changing backgrounds based on Pokemon
+//    - Removed changing backgrounda
 // 
 // Parameter Key: [Series][Set#]-[Card#]
 // 
@@ -34,13 +38,6 @@ const IMGSET = CARD_JSON.data[0].set.images.logo
 const pack_logo = await getBG(IMGSET)
 
 const background = await getBG("http://dreamitive.org/widgets/pokemon2.jpeg")
-const eevee = await getBG("http://dreamitive.org/widgets/pokemon.jpeg")
-const gengar = await getBG("https://wallpaperaccess.com/download/pokemon-gengar-560392")
-const birds = await getBG("http://dreamitive.org/widgets/birds.jpeg")
-const charizard = await getBG("http://dreamitive.org/widgets/char.jpeg")
-const dragonite = await getBG("http://dreamitive.org/widgets/dragonite.jpeg")
-const dpg = await getBG("http://dreamitive.org/widgets/dpg.jpeg")
-const lugia = await getBG("http://dreamitive.org/widgets/lugia.jpeg")
 
 async function getBG(url) {
    let imgReq = new Request(url)
@@ -87,7 +84,6 @@ function createWidget()
 
   const sub = widget.addStack()
   const imgsub = sub.addStack()
-  const cardSub = imgsub.addStack()
   
   const cardText = widget.addText("     " +cardID + "/" + data.data[0].set.total)
   cardText.font = Font.semiboldMonospacedSystemFont(8)
@@ -118,46 +114,7 @@ function createWidget()
     Script.complete()
   }
   
-  
-  if (CARDNAME.toString().includes("Espeon") ||
-      CARDNAME.toString().includes("Sylveon") ||
-      CARDNAME.toString().includes("Glaceon") ||
-      CARDNAME.toString().includes("Flareon") ||
-      CARDNAME.toString().includes("Leafeon") ||
-      CARDNAME.toString().includes("Umbreon") ||
-      CARDNAME.toString().includes("Jolteon") ||
-      CARDNAME.toString().includes("Vaporeon") ||
-      CARDNAME.toString().includes("Eevee"))
-  {
-    widget.backgroundImage = eevee
-  }else if (CARDNAME.toString().includes("Gengar"))
-  {
-    widget.backgroundImage = gengar
-    pkmnPrice.textColor = Color.black()
-    pkmnPrice.textOpacity = 0.7
-  }else if (CARDNAME.toString().includes("Moltres") || CARDNAME.toString().includes("Zapados") || CARDNAME.toString().includes("Articuno"))
-  {
-    widget.backgroundImage = birds
-    pkmnPrice.textColor = Color.black()
-  }else if (CARDNAME.toString().includes("Charizard"))
-  {
-    widget.backgroundImage = charizard
-    pkmnPrice.textColor = Color.black()
-  }else if (CARDNAME.toString().includes("Dragonite"))
-  {
-    widget.backgroundImage = dragonite
-    pkmnPrice.textColor = Color.black()
-  }else if (CARDNAME.toString().includes("Lugia"))
-  {
-    widget.backgroundImage = lugia
-    pkmnPrice.textColor = Color.black()
-  }else if (CARDNAME.toString().includes("Dialga") || CARDNAME.toString().includes("Palkia") || CARDNAME.toString().includes("Giratina"))
-  {
-    widget.backgroundImage = dpg
-    pkmnPrice.textColor = Color.black()
-  }else{
-    widget.backgroundImage = background
-  }
+  widget.backgroundImage = background
 
   return widget
 }
