@@ -3,8 +3,7 @@ iOS Widget that displays Pokémon Card information and price.
 
 ![0341673E-483B-4219-8469-FB04EDDCA368](0341673E-483B-4219-8469-FB04EDDCA368.jpeg)
 
-
-![Visitor Count](https://profile-counter.glitch.me/RealNickonator/count.svg)
+![Visit](https://badges.pufler.dev/visits/RealNickonator/PokeWidget) 
 
 ## Setup
 
